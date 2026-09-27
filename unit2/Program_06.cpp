@@ -24,24 +24,20 @@ public:
     }
 };
 
-class Student : public Academic, public Sports {   // Multiple inheritance
+class Student : public Academic, public Sports {
 public:
-    // Initialize both base classes
     Student(int academic, int sports)
         : Academic(academic), Sports(sports) {}
 
     void showTotal() const {
-        std::cout << "Total Marks: "
-                  << academicMarks + sportsMarks << '\n';
+        std::cout << "Total Marks: " << academicMarks + sportsMarks << '\n';
     }
 };
 
 int main() {
-    Student student(80, 15);       // Create Student object
-
-    student.showAcademic();        // Display academic marks
-    student.showSports();          // Display sports marks
-    student.showTotal();           // Display total marks
-
-    return 0;                      // End program
+    Student student(80, 15);
+    student.showAcademic();
+    student.showSports();
+    student.showTotal();
+    return 0;
 }

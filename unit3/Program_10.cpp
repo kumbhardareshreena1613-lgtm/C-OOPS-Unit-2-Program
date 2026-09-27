@@ -1,54 +1,50 @@
 #include <iostream>
 
-// Abstract base class
 class Shape {
 public:
-    // Pure virtual function
-    virtual double area() const = 0;
-
+    virtual double area() const {
+        return 0.0;
+    }
     virtual ~Shape() = default;
 };
 
-// Rectangle inherits from Shape
 class Rectangle : public Shape {
 private:
     double length;
     double width;
 
 public:
-    // Constructor
     Rectangle(double givenLength, double givenWidth)
         : length(givenLength), width(givenWidth) {}
 
-    // Calculate rectangle area
     double area() const override {
         return length * width;
     }
 };
 
-// Circle inherits from Shape
 class Circle : public Shape {
 private:
     double radius;
 
 public:
-    // Constructor
     explicit Circle(double givenRadius) : radius(givenRadius) {}
 
-    // Calculate circle area
     double area() const override {
-        return 3.141592653589793 * radius * radius;
+        constexpr double PI = 3.141592653589793;
+        return PI * radius * radius;
     }
 };
 
+void printArea(const Shape& shape) {
+    std::cout << "Area: " << shape.area() << '\n';
+}
+
 int main() {
-    // Creating objects
     Rectangle rectangle(5.0, 3.0);
     Circle circle(2.0);
 
-    // Displaying calculated areas
-    std::cout << "Rectangle Area: " << rectangle.area() << '\n';
-    std::cout << "Circle Area: " << circle.area() << '\n';
+    printArea(rectangle);
+    printArea(circle);
 
     return 0;
 }

@@ -2,20 +2,16 @@
 #include <string>
 #include <utility>
 
-// Outer class
 class University {
 public:
-    // Nested class
     class Department {
     private:
         std::string name;
 
     public:
-        // Constructor
         explicit Department(std::string departmentName)
             : name(std::move(departmentName)) {}
 
-        // Display department name
         void display() const {
             std::cout << "Department: " << name << '\n';
         }
@@ -23,13 +19,7 @@ public:
 };
 
 int main() {
-    // Create nested class object
-    University::Department department(
-        "Artificial Intelligence and Data Science"
-    );
-
-    // Call display function
+    University::Department department("Artificial Intelligence and Data Science");
     department.display();
-
     return 0;
 }

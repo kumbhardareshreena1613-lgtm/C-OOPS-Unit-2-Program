@@ -2,20 +2,19 @@
 #include <string>
 #include <utility>
 
-class Person {                         // Base class
+class Person {
 protected:
     std::string name;
 
 public:
-    explicit Person(std::string personName)
-        : name(std::move(personName)) {}
+    explicit Person(std::string personName) : name(std::move(personName)) {}
 
     void showPerson() const {
         std::cout << "Name: " << name << '\n';
     }
 };
 
-class Employee : public Person {       // Employee inherits Person
+class Employee : public Person {
 protected:
     int employeeId;
 
@@ -28,26 +27,23 @@ public:
     }
 };
 
-class Manager : public Employee {      // Manager inherits Employee
+class Manager : public Employee {
 private:
     int teamSize;
 
 public:
-    // Initialize Employee and team size
     Manager(std::string managerName, int id, int size)
         : Employee(std::move(managerName), id), teamSize(size) {}
 
     void showManager() const {
-        showPerson();                  // Call Person function
-        showEmployee();                // Call Employee function
+        showPerson();
+        showEmployee();
         std::cout << "Team Size: " << teamSize << '\n';
     }
 };
 
 int main() {
-    Manager manager("Ravi", 501, 8);   // Create Manager object
-
-    manager.showManager();             // Display all details
-
-    return 0;                          // End program
+    Manager manager("Ravi", 501, 8);
+    manager.showManager();
+    return 0;
 }
